@@ -1,0 +1,21 @@
+.news .year {
+    display: flex;
+    flex-direction: row;
+    width: inherit;
+}
+.news .year .next-year {
+    position: absolute;
+    right: 15px;
+    
+}
+.news .year a {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: blueviolet;
+    border-radius: 28px;
+}
+.news .year a:hover {
+    background-color: rgb(105, 7, 129);
+}

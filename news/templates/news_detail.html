@@ -1,0 +1,73 @@
+{% extends 'layout/master.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/news_detail.css' %}">
+{% endblock%}
+
+
+{% block content %}
+<!-- {% include 'layout/_banner.html' %} -->
+<section id="news-detail" class="news-detail section-bg">
+    <div class="container-fluid" data-aos="fade-down">
+
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="news-card">
+                    <div class="image">
+                        <div class="news-image">
+                            <img src="{{news.image.url}}" alt="" srcset="">
+                        </div>
+                        <div class="publication-details">
+                            <a href="" class="author"><i class="fa fa-user"></i>{{ news.author}}</a>
+                            <span class="date"><i
+                                    class="fa fa-calendar-check-o"></i>{{news.create_at | timesince}}</span>
+                        </div>
+                    </div>
+                    <div class="news-items">
+                        <div class="news-data">
+                            <div class="title">
+                                {{ news.title}}
+                            </div>
+                            <div class="subtitle">
+                                {{ news.subtitle }}
+                                {{ news.get_next_by_create_at }}
+                            </div>
+                        </div>
+
+                        <div class="description">
+                            {{ news.description | safe }}
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="more-news">
+                        {% if news.get_next_by_create_at %}
+                        <div class="prev">
+
+                            <a rel="prev" href="{{ news.get_next_by_create_at.slug }}">
+                                <i class="fa fa-chevron-left"></i>Prev Article</a>
+
+                        </div>
+                        {% endif %}
+                        {% if news.get_previous_by_create_at %}
+                        <div class="next">
+                            <a rel="next" href="{{ news.get_previous_by_create_at.slug}}">
+                                Next Article<i class="fa fa-chevron-right"></i></a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+            <!-- {% if news.get_next_by_created %}
+            <a href="{{ news.get_next_by_created_at.slug }}" class="link">NEXT</a>
+            {% endif %} -->
+            <div class="col-lg-3">
+                This is ads section.
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

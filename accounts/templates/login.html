@@ -1,0 +1,40 @@
+{% load widget_tweaks %}
+
+<form method="POST" action="">
+    <div class="m-header">
+        <i class="fa fa fa-times-circle" data-dismiss="modal"></i>
+    </div>
+    <div class="form-container modal-body">
+
+        {% csrf_token %}
+        <h3>Sign In</h3>
+        <div class="social-container">
+            <a href="" class="social"><i class="fa fa-facebook"></i></a>
+            <a href="" class="social"><i class="fa fa-google"></i></a>
+            <a href="" class="social"><i class="fa fa-twitter"></i></a>
+        </div>
+        <span>or Be classic</span>
+        <div class="{% if form.non_field_errors %} invalid {% endif%}">
+            {% for error in form.non_field_errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+        {% for field in form %}
+        {% render_field field placeholder=field.label %}
+        <div class="{% if field.errors %} invalid {% endif %}">
+            {% for error in field.errors %}
+            <p class="help-block">{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+
+
+        <a class="mt-3" href="#">Forgot your password?</a><br>
+        <button type="submit" class="submit-btn">Login</button>
+
+    </div>
+    <div class="m-footer">
+        <p>I don't have an account. <a href="{% url 'register' %}">Create Account.</a></p>
+    </div>
+</form>

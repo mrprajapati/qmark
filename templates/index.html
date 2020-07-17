@@ -1,0 +1,105 @@
+{% extends 'layout/master.html' %} {% load static %} {% block css%}
+<link rel="stylesheet" href="{% static '/css/index.css' %}"> {% endblock%} {% block content %}
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+
+    <div class="container-fluid" data-aos="fade-up">
+        <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <h1>Welcome to Qmarks</h1>
+                <h2>The only online Mock Test site for students.</h2>
+                <div><a href="" class="btn-get-started scrollto">Start Test</a></div>
+            </div>
+            <div class="col-xl-4 col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="150">
+                <img src="{% static '/img/exam.svg' %}" alt="">
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- End Hero -->
+
+
+<!-- ======= Current  Section ======= -->
+<section id="current" class="about">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="150">
+                <img src="{% static '/img/article.svg' %}" alt="" srcset="">
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+                <h3>Daily Current Affairs.</h3>
+                <p class="font-italic">
+                    We provide daliy news based on national, international and state wise, so you can easily get updated
+                    by latest facts.
+                </p>
+                <ul>
+                    <li><i class="fa fa-check-circle-o"></i> News in local languages.</li>
+                    <li><i class="fa fa-check-circle-o"></i> News are sorted by days and months, so you can find easily.
+                    </li>
+                    <li><i class="fa fa-check-circle-o"></i>We also provide current affairs test so you can test your
+                        self and know how much you gain knowledge.</li>
+                </ul>
+                <a href="#" class="read-more">Read More <i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End About Section -->
+
+<!-- Test Section-->
+<section id="test" class="about test-bg">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 order-1 order-lg-2 content" data-aos="zoom-in" data-aos-delay="150">
+                <h3>Daily Online Mock Test.</h3>
+                <p class="font-italic">
+                    We provide daliy mock test for students so they can learn better and faster.
+                </p>
+                <ul>
+                    <li><i class="fa fa-check-circle-o"></i> Exam based mock tests.</li>
+                    <li><i class="fa fa-check-circle-o"></i> Online time based for all students at same.</li>
+                    <li><i class="fa fa-check-circle-o"></i> Ranking all students for perticular test.</li>
+                </ul>
+                <a href="#" class="read-more">Register <i class="fa fa-chevron-right"></i></a>
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-right">
+                <img src="{% static '/img/test.svg' %}" alt="">
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End About Section -->
+
+<!-- ======= Current  Section ======= -->
+<section id="current" class="about">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="150">
+                <img src="{% static '/img/job.svg' %}" alt="" srcset="">
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+                <h3>Goverment Job Notification.</h3>
+                <p class="font-italic">
+                    We provide every Goverment job update here so you can apply for it with direct link.
+                </p>
+                <ul>
+                    <li><i class="fa fa-check-circle-o"></i> we show Job datails.</li>
+                    <li><i class="fa fa-check-circle-o"></i> Exam date and call letters notification.</li>
+                    <li><i class="fa fa-check-circle-o"></i> You need to just add notification for job and we provide
+                        all the information about it.</li>
+                </ul>
+                <a href="#" class="read-more">See Jobs<i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End About Section -->
+
+{% endblock %} {% block js%} {% endblock%}

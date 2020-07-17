@@ -1,0 +1,194 @@
+.register .container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: auto;
+}
+
+.register .register-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.register .info {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: var(--gradiant-color);
+    top: 0px;
+    left: 0px;
+    color: red;
+    align-items: center;
+    text-align: center;
+}
+
+.register .info h2 {
+    font-size: 45px;
+    color: white;
+    padding: 50px 30px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.register .info h5 {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin-top: -20px;
+}
+
+.register .info span {
+    font-size: 50px;
+    padding: 0 5px 5px 0;
+    font-family: 'Lobster', cursive;
+    color: #5beb08;
+}
+
+.register .info p {
+    padding-top: 50px;
+    color: white;
+    font-weight: bold;
+}
+
+.register img {
+    width: inherit;
+    height: 100%;
+}
+
+
+/* form css */
+
+.register h3 {
+    font-weight: bold;
+    margin: 0;
+}
+
+.register p {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px;
+}
+
+.register span {
+    font-size: 12px;
+    font-weight: bold;
+}
+.register .invalid {
+    color: red;
+}
+.register .invalid p {
+    margin: 0;
+}
+.register a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+.register button {
+    border-radius: 28px;
+    border: 1px solid #6b17da;
+    background-color: #6b17da;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin-top: 15px;
+}
+
+.register button:active {
+    transform: scale(0.95);
+}
+
+.register button:focus {
+    outline: none;
+}
+
+.register form {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 10px;
+    height: 100%;
+    text-align: center;
+}
+
+.register input {
+    background-color: #eee;
+    border: none;
+    border-radius: 28px;
+    padding: 10px 12px;
+    margin: 5px 0;
+    width: 100%;
+}
+
+.register .has-error {
+    border: 1px solid red;
+}
+
+.register .has-success {
+    border: 1px solid green;
+}
+
+.register .help-block {
+    color: red;
+}
+
+.register .form-check input[type="checkbox"] {
+    position: absolute;
+    left: -130px;
+}
+
+.register .form-check label {
+    left: -10px;
+    position: relative;
+}
+
+.register input:focus {
+    outline: none;
+}
+
+.register .social-container {
+    margin: 20px 0;
+}
+
+.register .social-container a {
+    border: 1px solid #dddddd;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    height: 40px;
+    width: 40px;
+}
+
+.register .social-container a:hover {
+    background-color: #a808e7;
+    color: #fff;
+}
+
+.register .register-container {
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    .register .container {
+        width: 90%;
+    }
+}

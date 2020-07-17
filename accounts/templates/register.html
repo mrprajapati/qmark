@@ -1,0 +1,72 @@
+{% extends 'layout/master.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block css%}
+<link rel="stylesheet" href="{% static '/css/register.css' %}">
+{% endblock%}
+
+{% block content%}
+<section class="register section-bg">
+    <div class="container" data-aos="fade-down">
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 d-sm-none d-md-block d-none d-sm-block">
+                <div class="register-image">
+                    <img src="{% static 'img/register.jpg' %}" alt="" srcset="">
+                    <div class="info">
+                        <h2 class="">Welcome to <span>Q</span>mark</h2>
+                        <h5>We are happy that you join us.</h5>
+                        <p>I have an account. Then just Login.</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="register-container mb-5">
+                    <form id="registrainForm" method="POST">
+                        <h3>Create Account</h3>
+                        <div class="social-container">
+                            <a href="" class="social"><i class="fa fa-facebook"></i></a>
+                            <a href="" class="social"><i class="fa fa-google"></i></a>
+                            <a href="" class="social"><i class="fa fa-twitter"></i></a>
+                        </div>
+                        <span>or Be classic</span>
+
+                        <div class="{% if form.non_field_errors %} invalid {% endif%}">
+                            {% for error in form.non_field_errors %}
+                            {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% csrf_token %}
+
+                        {% for field in form %}
+                        {% if field.errors %}
+                        {% render_field field class="has-error" placeholder=field.label %}
+                        {% else %}
+                        {% render_field field placeholder=field.label %}
+                        {% endif%}
+                        <div class="{% if field.errors %} invalid {% endif %}">
+                            {% for error in field.errors %}
+                            <p style="color: red;">{{ error}}</p>
+                            {% endfor %}
+                        </div>
+
+                        {% endfor %}
+                        <button type="submit">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</section>
+{% endblock %}
+
+{% block js%}
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script> -->
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+<!-- <script src="{% static 'js/register.js'%}"></script> -->
+{% endblock %}

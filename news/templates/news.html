@@ -1,0 +1,159 @@
+{% extends 'layout/master.html' %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/news.css' %}">
+{% endblock%}
+
+{% block content %}
+
+<section id="news" class="news section-bg">
+    <div class="container" id="news-cont" data-aos="fade-down">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+
+                {% if query %}
+                <div class="text-muted">
+                    <h4><strong>Search:</strong> {{ query }}</h4>
+                </div>
+                {% else %}
+                <div class="section-title d-none d-sm-block">
+                    <h2>Current Affairs</h2>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="filter-data">
+                    <!-- Search  News -->
+                    <div class="search-box">
+                        <form method="get" action="{% url 'search' %}">
+                            <input class="search-txt" type="text" name="q" placeholder="Search..">
+                            <button type="submit" class="search-btn">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- Filter News -->
+                    <div class="news-filter">
+                        <p id="filter-btn" class="btn btn-primary">filter</p>
+                        <div class="filter-pop">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% if news_list %}
+        {% for news in news_list %}
+
+        <div class="changed">
+            {% ifchanged news.create_at|date:'m' %}<p>{{ news.create_at|date:"F Y" }}</p>{% endifchanged %}
+        </div>
+        <div class="card mb-3   ">
+            <div class="image-data">
+                <div class="background-image">
+                    <img src="{{ news.image.url }}" alt="">
+                </div>
+
+                <div class="publication-details">
+                    <a href="" class="author"><i class="fa fa-user"></i>{{ news.author}}</a>
+                    <span class="date"><i class="fa fa-calendar-check-o"></i>{{news.create_at|timesince }}</span>
+                    <span class="date"><i class="fa fa-calendar-check-o"></i>{% if news.create_at|timesince > 6   %}
+                        {{ news.create_at }} {% endif %}</span>
+                </div>
+
+            </div>
+            <div class="post-data">
+                <h1 class="title">{{news.title}}</h1>
+                <h2 class="subtitle">{{news.subtitle}}</h2>
+                <!-- <p class="description">{{ news.description | safe | truncatechars:100}}</p> -->
+
+                <div class="cta">
+                    <a href="{% url 'news-detail' slug=news.slug %}">Read More..</a>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+        <h1>No News Found.</h1>
+        {% endif %}
+
+        {% if is_paginated %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1">&laquo;</a>
+                </li>
+                {% endif %}
+
+                <!-- {% for i in paginator.page_range %}
+                {% if page_obj.number == i %}
+                <li class="link-active page-item"><span class="page-link">{{ i }}</span></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+                {% endfor %} -->
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link"
+                        href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                {% endif %}
+                <li class="link-active page-item"><span class="page-link">{{ page_obj.number }}</span></li>
+                {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link"
+                        href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+
+
+
+
+        <!-- {% if is_paginated %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1">&laquo; First</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+                {% endif %}
+
+                <li class="page-item active">
+                    <span class="page-link">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    </span>
+                </li>
+
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}"> Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last &laquo;</a>
+                </li>
+                {% endif %}
+
+            </ul>
+        </nav>
+        {% endif %} -->
+
+
+
+    </div>
+</section>
+
+{% endblock %}
+
+{% block js%}
+<script src="{% static '/js/news.js' %}"></script>
+{% endblock%}

@@ -1,0 +1,141 @@
+.signModal .container {
+    border-radius: 10px;
+    padding: 20px 0;
+
+}
+
+.modal h3 {
+    font-weight: bold;
+    margin: 0;
+}
+
+.modal p {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px;
+}
+
+.modal span {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.modal a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+.modal button {
+    border-radius: 20px;
+    border: 1px solid #6b17da;
+    background-color: #6b17da;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+.modal button:active {
+    transform: scale(0.95);
+}
+
+.modal button:focus {
+    outline: none;
+}
+
+.modal form {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 50px;
+    height: 100%;
+    text-align: center;
+}
+
+.modal input {
+    background-color: #eee;
+    border: none;
+    border-radius: 28px;
+    padding: 10px 12px;
+    margin: 5px 0;
+    width: 100%;
+}
+
+.modal input:focus {
+    outline: none;
+}
+
+.modal .social-container {
+    margin: 20px 0;
+}
+
+.modal .form-container .invalid {
+    color: red;
+}
+.modal .form-container .invalid p {
+    margin: 1px;
+}
+.modal .form-container .input-error {
+    border: 1px solid red;
+}
+
+.modal .form-container .input-error {
+    border: 1px solid red;
+}
+
+.modal .form-container {
+    width: 100%;
+}
+.modal .social-container a {
+    border: 1px solid #dddddd;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    height: 40px;
+    width: 40px;
+}
+
+
+.modal .social-container a:hover {
+    background-color: #a808e7;
+    color: #fff;
+}
+
+.modal .m-footer {
+    text-align: center;
+    align-items: center;
+}
+
+.modal .m-footer p {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.modal .m-footer p a {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    text-transform: capitalize;
+    color: blueviolet;
+    font-size: 20px;
+}
+
+.modal .m-header i {
+    float: right;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 25px;
+    color: blueviolet;
+}
+

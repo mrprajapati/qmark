@@ -1,0 +1,27 @@
+{% block content %}
+<h2>Sign Page</h2>
+
+
+<form method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+    <p>
+        {{field.label_tag}} {{field}}
+    </p>
+    {% for error in field.errors %}
+    <p style="color: red;">{{ error}}</p>
+    {% endfor %}
+
+    {% for error in non_field.errors %}
+    <p style="color: red;">{{ error}}</p>
+    {% endfor %}
+    {% endfor %}
+    <button type="submit">Register</button>
+    <br>
+    <a href="{% url 'index' %}">Home</a>
+</form>
+
+
+
+{% endblock content %}

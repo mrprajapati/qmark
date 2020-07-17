@@ -1,0 +1,161 @@
+{% extends 'layout/master.html' %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/news.css' %}">
+{% endblock%}
+
+{% block content %}
+
+<section id="news" class="news section-bg">
+    <div class="container" id="news-cont" data-aos="fade-down">
+        <div class="row">
+            <!-- Fliter month detail -->
+            <div class="col-lg-6 col-md-6">
+
+                {% if month %}
+                <div class="text-muted">
+                    <h5><strong>News of:</strong> {{ month|date:'F Y' }}</h5>
+                </div>
+                {% else %}
+                <div class="section-title">
+                    <h2>Current Affairs</h2>
+                </div>
+                {% endif %}
+            </div>
+            <!-- news Filters -->
+            <div class="col-lg-6 col-md-6">
+                <div class="filter-data">
+
+                    <div class="search-box">
+                        <form method="get" action="{% url 'search' %}">
+                            <input class="search-txt" type="text" name="q" placeholder="Search..">
+                            <button type="submit" class="search-btn">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="news-filter">
+                        <p id="news-filter" class="btn btn-primary">filter</p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- News details -->
+        {% if object_list %}
+        {% for news in object_list %}
+        <div class="changed">
+            {% ifchanged news.create_at|date:'m' %}<p>{{ news.create_at|date:"F Y" }}</p>{% endifchanged %}
+        </div>
+        <div class="card mb-5">
+            <div class="image-data">
+                <div class="background-image">
+                    <img src="{{ news.image.url }}" alt="">
+                </div>
+
+                <div class="publication-details">
+                    <a href="" class="author"><i class="fa fa-user"></i>{{ news.author}}</a>
+                    <span class="date"><i class="fa fa-calendar-check-o"></i>{{news.create_at | timesince}}</span>
+                </div>
+            </div>
+            <div class="post-data">
+                <h1 class="title">{{news.title}}</h1>
+                <h2 class="subtitle">{{news.subtitle}}</h2>
+                <!-- <p class="description">{{ news.description | safe | truncatechars:100}}</p> -->
+
+                <div class="cta">
+                    <a href="{% url 'news-detail' slug=news.slug %}">Read More..</a>
+                </div>
+            </div>
+        </div>
+
+        {% empty %}
+        <div class="no-news">
+            <h1><span style='font-size:50px;'>&#128542;</span>Sorry, No News Avalible of {{ month|date:'F Y'}}</h1>
+        </div>
+        {% endfor %}
+
+        {% else %}
+        <div class="no-news">
+            <h1><span style='font-size:50px;'>&#128542;</span>Sorry, No News Avalible of {{ month|date:'F Y'}}</h1>
+        </div>
+        {% endif %}
+
+        <!-- Pagination  -->
+
+        {% if is_paginated %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1">&laquo;</a>
+                </li>
+                {% endif %}
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link"
+                        href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                {% endif %}
+                <li class="link-active page-item"><span class="page-link">{{ page_obj.number }}</span></li>
+                {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link"
+                        href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+                </li>
+                {% endif%}
+            </ul>
+        </nav>
+        {% endif %}
+
+        <!-- Month based buttons -->
+        <div class="year">
+            <div class="previous-year">
+                {% if previous_month %}
+                <a
+                    href="{% url 'month' previous_month|date:'Y' previous_month|date:'m' %}">{{ previous_month|date:"M y" }}</a>
+                {% endif %}
+            </div>
+            <div class="next-year">
+                {% if next_month %}
+                <a href="{% url 'month' next_month|date:'Y' next_month|date:'m' %}">{{ next_month|date:"M y" }}</a>
+                {% endif %}
+            </div>
+        </div>
+
+
+
+
+    </div>
+</section>
+
+{% endblock %}
+
+{% block js%}
+<script src="{% static '/js/news.js' %}"></script>
+{% endblock%}
+
+
+
+
+
+
+<!-- MOnth archive  -->
+<!-- <ul>
+    {% for article in object_list %}
+    <li>{{ article.create_at|date:"F j, Y" }}: {{ article.title }}</li>
+    {% endfor %}
+</ul>
+
+<p>
+    {% if previous_month %}
+    Previous Month: {{ previous_month|date:"F Y" }}
+    <a href="{% url 'month' previous_month|date:'Y' previous_month|date:'m' %}" class="link">Previous month</a>
+    {% endif %}
+    {% if next_month %}
+    Next Month: {{ next_month|date:"F Y" }}
+    <a href="{% url 'month' next_month|date:'Y' next_month|date:'m' %}" class="link">Next Month</a>
+    {% endif %}
+</p> -->
