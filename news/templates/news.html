@@ -76,9 +76,16 @@
             </div>
         </div>
 
+        {% empty %}
+        <div class="no-news">
+            <h1><span style='font-size:50px;'>&#128542;</span>Sorry, No News Avalible.</h1>
+        </div>
         {% endfor %}
+
         {% else %}
-        <h1>No News Found.</h1>
+        <div class="no-news">
+            <h1><span style='font-size:50px;'>&#128542;</span>Sorry, No News Avalible</h1>
+        </div>
         {% endif %}
 
         {% if is_paginated %}

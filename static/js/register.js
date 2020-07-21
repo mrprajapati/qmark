@@ -65,8 +65,3 @@ $().ready(function () {
     });
 });
 
-function ToggleForm() {
-    var container = document.querySelector('#signIn');
-    container.classList.toggle('active');
-}
-

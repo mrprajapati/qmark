@@ -9,7 +9,7 @@ class QuizCategory(models.Model):
         verbose_name_plural = "QuizCategories"
 
     def __str__(self):
-        return self.name
+        return self.category_name
 
 
 class Quiz(models.Model):
@@ -29,8 +29,7 @@ class Quiz(models.Model):
 
 
 class Question(models.Model):
-    quiz = models.ForeignKey(
-        Quiz, on_delete=models.CASCADE, related_name='quiz_question', blank=True, null=True)
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='quiz_question', blank=True, null=True)
     question_text = models.CharField(max_length=1000)
     mark = models.PositiveIntegerField(default=1)
     option_A = models.CharField(max_length=200)

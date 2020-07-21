@@ -14,6 +14,7 @@ class NewsArchiveView(ArchiveIndexView):
     paginate_by = 2
     template_name = 'news.html'
     context_object_name = 'news_list'
+    allow_empty = True
 
     def get_queryset(self):
         queryset = super(NewsArchiveView, self).get_queryset()
