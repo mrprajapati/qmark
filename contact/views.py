@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .models import Contact
 from django.http import HttpResponse
 
-
 def contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -14,3 +13,9 @@ def contact(request):
         form.save()
         return HttpResponse('OK')
     return render(request, 'contact.html')
+def low(self):
+    pela = 'loweer'
+    if pela == pela:
+        return True
+    else:
+        return False

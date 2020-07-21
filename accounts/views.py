@@ -11,6 +11,7 @@ class RegisterView(FormView):
     form_class = RegistrationForm
     template_name = 'register.html'
     success_url = reverse_lazy('index')
+    success_message = "Registration Success :)"
 
     def form_valid(self, form):
         form.save()

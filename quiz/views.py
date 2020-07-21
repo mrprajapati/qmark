@@ -15,11 +15,21 @@ class DemoQuiz(ListView):
 
     def get_queryset(self):
         queryset = super(DemoQuiz, self).get_queryset()
-        queryset = queryset.filter(category__id=3)
+        queryset = queryset.filter(category__category_name='Demo')
         return queryset
 
     def get_context_data(self, **kwargs):
+        """
+        {
+            que id: ['who the president of india?', 'Dr. Pranav Mukhargee', 'Ramanath Kovind', 'Narendra Modi', 'Amit shah'], 
+            que id: ['who the president of india?', 'Dr. Pranav Mukhargee', 'Ramanath Kovind', 'Narendra Modi', 'Amit shah'], 
+            que id: ['who the president of india?', 'Dr. Pranav Mukhargee', 'Ramanath Kovind', 'Narendra Modi', 'Amit shah'], 
+            que id: ['who the president of india?', 'Dr. Pranav Mukhargee', 'Ramanath Kovind', 'Narendra Modi', 'Amit shah'], 
+        }
+        """
         context = super(DemoQuiz, self).get_context_data(**kwargs)
-        context['quiz_question'] = Question.objects.filter(
-            test=kwargs['test_id'])
+        context['quiz_question'] = Question.objects.filter(quiz__id=context['object_list'][0].id)
         return context
+
+
+# calculate
